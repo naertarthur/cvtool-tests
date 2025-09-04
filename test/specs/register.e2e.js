@@ -2,7 +2,7 @@ const RegisterPage = require("../pageobjects/RegisterPage");
 const { browser, expect } = require("@wdio/globals");
 
 describe("Register feature", () => {
-  const basePassword = "Test";
+  const basePassword = "Test12345!";
 
   beforeEach(async () => {
     await browser.reloadSession();

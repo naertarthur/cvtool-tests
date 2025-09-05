@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/naertharthur/cvtool-tests.git'
+                    url: 'https://github.com/naertarthur/cvtool-tests.git'
             }
         }
 

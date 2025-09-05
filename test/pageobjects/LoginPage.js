@@ -22,10 +22,14 @@ class LoginPage {
     );
   }
   async login(username, password) {
+    await this.inputEmail.waitForDisplayed({ timeout: 10000 });
     await this.inputEmail.setValue(username);
+
+    await this.inputPassword.waitForDisplayed({ timeout: 10000 });
     await this.inputPassword.setValue(password);
+
+    await this.loginButton.waitForClickable({ timeout: 10000 });
     await this.loginButton.click();
   }
 }
-
 module.exports = new LoginPage();

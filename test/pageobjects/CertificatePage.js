@@ -65,16 +65,40 @@ class CertificatePage {
   async addCertificateWithDropdowns(certificateName, distributorName, year) {
     await this.selectCuratedCertificate(certificateName);
     await this.selectCuratedDistributor(distributorName);
-    await this.selectYear(year); 
+    await this.selectYear(year);
     await this.saveBtn.click();
   }
 
   async addCertificateWithInputs(certificateName, distributorName, year) {
+    await this.inputCertificate.waitForDisplayed();
     await this.inputCertificate.setValue(certificateName);
+
+    await this.inputDistributor.waitForDisplayed();
     await this.inputDistributor.setValue(distributorName);
+
+    await this.inputYear.waitForDisplayed();
     await this.inputYear.setValue(year);
+
     await this.saveBtn.click();
   }
+
+  get deleteButtons() {
+    return $$("a.btn.btn-danger.btn-xs.btn-icon");
+  }
+
+  async deleteFirstCertificate() {
+  const deleteBtn = await this.deleteButtons[0];
+  await deleteBtn.scrollIntoView();
+
+  await browser.execute(() => {
+    window.confirm = () => true;
+  });
+
+  await deleteBtn.click();
+}
+
+
+
 }
 
 module.exports = new CertificatePage();

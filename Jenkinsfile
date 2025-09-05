@@ -21,7 +21,11 @@ pipeline {
         stage('Allure Report') {
             steps {
                 bat 'npx allure generate allure-results --clean -o allure-report'
-                bat 'npx allure open allure-report'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'allure-report/**', fingerprint: true
+                }
             }
         }
     }

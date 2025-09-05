@@ -18,15 +18,14 @@ pipeline {
                 bat 'npx wdio run wdio.conf.js'
             }
         }
-        stage('Allure Report') {
-            steps {
-                bat 'npx allure generate allure-results --clean -o allure-report'
-            }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'allure-report/**', fingerprint: true
-                }
-            }
-        }
+       stage('Allure Report') {
+    steps {
+        allure([
+            includeProperties: false,
+            jdk: '',
+            results: [[path: 'allure-results']]
+        ])
+    }
+}
     }
 }

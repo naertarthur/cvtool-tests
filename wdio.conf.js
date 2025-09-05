@@ -5,6 +5,7 @@ exports.config = {
   // ====================
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: "local",
+  maxInstances: 2,
   //
   // ==================
   // Specify Test Files
@@ -47,11 +48,17 @@ exports.config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-  capabilities: [
+capabilities: [
     {
-      browserName: "chrome",
+        maxInstances: 2,
+        browserName: 'chrome',
     },
-  ],
+    {
+        maxInstances: 2,
+        browserName: 'MicrosoftEdge',
+    }
+],
+
 
   //
   // ===================

@@ -22,7 +22,7 @@ it("Show an error for invalid email", async () => {
 it("Login works with valid credentials", async () => {
   await LoginPage.open();
 
-  await LoginPage.login("johndoe1@brightestt.be", "Test12345!");
+  await LoginPage.login("johndoe1@brightest.be", "Test12345!");
   await browser.pause(1500);
   await expect(browser).toHaveUrl(
     "https://brightest-portal-staging.herokuapp.com/"
